@@ -1,0 +1,9 @@
+# Nova: The Ambient Personal AI
+# Core dependencies
+sounddevice
+Flask
+requests
+python-dotenv
+rpi_ws281x
+pytest
+# Add more as modules are implemented

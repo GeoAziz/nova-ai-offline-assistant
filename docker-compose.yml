@@ -1,0 +1,53 @@
+version: '3.8'
+services:
+  nova-python:
+    build:
+      context: .
+      dockerfile: Dockerfile.python
+    volumes:
+      - ./logs:/app/logs
+      - ./config:/app/config
+    environment:
+      - PYTHONUNBUFFERED=1
+    depends_on:
+      - whisper
+      - ollama
+      - coqui
+    # Remove Flask port from backend, now separate
+
+  whisper:
+    build:
+      context: .
+      dockerfile: Dockerfile.whisper
+    volumes:
+      - ./whisper-data:/whisper/data
+    ports:
+      - "9000:9000" # Example port for API
+
+  ollama:
+    build:
+      context: .
+      dockerfile: Dockerfile.ollama
+    ports:
+      - "11434:11434"
+
+  coqui:
+    build:
+      context: .
+      dockerfile: Dockerfile.coqui
+    ports:
+      - "5002:5002" # Example port for TTS API
+
+  interface:
+    build:
+      context: .
+      dockerfile: Dockerfile.python
+    command: python interface.py
+    volumes:
+      - ./logs:/app/logs
+    ports:
+      - "5000:5000" # Flask UI
+
+networks:
+  default:
+    driver: bridge

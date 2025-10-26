@@ -1,0 +1,6 @@
+# Nova YAML configuration
+whisper_path: /path/to/whisper.cpp
+ollama_endpoint: http://localhost:11434
+coqui_tts_path: /path/to/coqui-tts
+led_pin: 18
+memory_limit: 20

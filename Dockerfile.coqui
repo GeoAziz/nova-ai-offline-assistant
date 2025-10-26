@@ -1,0 +1,5 @@
+# Coqui TTS Dockerfile
+FROM python:3.11-slim
+WORKDIR /coqui
+RUN pip install TTS
+CMD ["tts-server"]
