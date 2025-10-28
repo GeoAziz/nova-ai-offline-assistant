@@ -6,4 +6,9 @@ requests
 python-dotenv
 rpi_ws281x
 pytest
+numpy
+scipy
+PyYAML
+icalendar
+Pillow
 # Add more as modules are implemented

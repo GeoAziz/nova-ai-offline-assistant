@@ -26,6 +26,7 @@ def set_led_state(strip, state: str):
 	"""
 	Set LED color/effect based on Nova state.
 	States: listening, thinking, speaking, idle
+	Advanced: breathing, rainbow, pulse animations.
 	"""
 	if strip is None:
 		return
@@ -49,3 +50,19 @@ def set_led_state(strip, state: str):
 			strip.setBrightness(b)
 			strip.show()
 			time.sleep(0.03)
+	if state == "listening":
+		# Breathing animation stub
+		for b in range(20, LED_BRIGHTNESS, 8):
+			strip.setBrightness(b)
+			strip.show()
+			time.sleep(0.05)
+		for b in range(LED_BRIGHTNESS, 20, -8):
+			strip.setBrightness(b)
+			strip.show()
+			time.sleep(0.05)
+	if state == "speaking":
+		# Rainbow animation stub
+		for j in range(LED_COUNT):
+			strip.setPixelColor(j, Color((j*20)%255, (255-j*20)%255, (j*10)%255))
+		strip.show()
+		time.sleep(0.2)

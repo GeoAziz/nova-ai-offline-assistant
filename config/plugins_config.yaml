@@ -1,0 +1,12 @@
+# Plugin configuration for Nova
+# Add API keys, device info, and settings here
+openweather_api_key: ""
+news_api_key: ""
+weather_city: "London"
+smart_home_devices:
+  - name: "Living Room Light"
+    type: "light"
+    status: "off"
+  - name: "Thermostat"
+    type: "thermostat"
+    status: "22°C"

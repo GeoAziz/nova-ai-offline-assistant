@@ -48,6 +48,17 @@ services:
     ports:
       - "5000:5000" # Flask UI
 
+  open-webui:
+    image: ghcr.io/open-webui/open-webui:main
+    restart: unless-stopped
+    # Expose default UI port; change if your Open Web UI uses a different port
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./open-webui-data:/data
+    environment:
+      - TZ=UTC
+
 networks:
   default:
     driver: bridge
